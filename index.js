@@ -26,17 +26,20 @@ addButtonEl.addEventListener("click", function () {
 });
 
 onValue(shoppingListInDB, function (snapshot) {
-  //   let dbList = Object.values(snapshot.val());
-  let dbList = Object.entries(snapshot.val());
+  if (snapshot.exists()) {
+    let dbList = Object.entries(snapshot.val());
 
-  clearShoppingList();
+    clearShoppingList();
 
-  for (let i = 0; i < dbList.length; i++) {
-    let currentItem = dbList[i];
-    let currentItemID = currentItem[0];
-    let currentItemValue = currentItem[1];
+    for (let i = 0; i < dbList.length; i++) {
+      let currentItem = dbList[i];
+      let currentItemID = currentItem[0];
+      let currentItemValue = currentItem[1];
 
-    addListitem(currentItem);
+      addListitem(currentItem);
+    }
+  } else {
+    shoppingListEl.innerHTML = "Nothing in here... yet";
   }
 });
 
