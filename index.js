@@ -25,6 +25,13 @@ addButtonEl.addEventListener("click", function () {
   clearInput();
 });
 
+inputFieldEl.addEventListener("keypress", function (event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    addButtonEl.click();
+  }
+});
+
 onValue(shoppingListInDB, function (snapshot) {
   if (snapshot.exists()) {
     let dbList = Object.entries(snapshot.val());

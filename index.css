@@ -5,6 +5,7 @@ body {
   font-family: "Rubik", sans-serif;
   background-color: #eef0f4;
   color: #432000;
+  user-select: none;
 }
 
 .container {
